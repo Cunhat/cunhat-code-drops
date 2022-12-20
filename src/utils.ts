@@ -69,3 +69,11 @@ type Directories = Map<string,{
         // slug: string,
     }>,
 }>
+
+export const removeExtension = (fileName: string) => {
+    return fileName.replace(".md", "");
+}
+
+export const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

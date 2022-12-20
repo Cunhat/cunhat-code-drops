@@ -1,7 +1,7 @@
 ---
 import CodeDrops from '../layouts/CodeDrops.astro';
 import Card from '../components/Card.astro';
-import { getDropsData } from '../utils';
+import { getDropsData, capitalizeFirstLetter, removeExtension } from '../utils';
 
 const Paths = getDropsData();
 ---
@@ -10,12 +10,14 @@ const Paths = getDropsData();
   {
     [...Paths.keys()].map((drop) => (
       <div class='flex flex-col gap-3'>
-        <h1 class='text-white text-xl font-bold'>{drop}</h1>
+        <h1 class='text-white text-xl font-bold'>
+          {capitalizeFirstLetter(drop)}
+        </h1>
         <li>
           {Paths.get(drop)!.files.map((item) => {
             return (
-              <ul class='text-white text-base font-regular border-l-2 border-l-indigo-500 pl-3 h-7 hover:bg-indigo-300 hover:cursor-pointer'>
-                {item.name}
+              <ul class='text-white text-base font-regular border-l-2 border-l-indigo-500 pl-3 h-7 hover:bg-indigo-300 hover:cursor-pointer hover:bg-opacity-70'>
+                {capitalizeFirstLetter(removeExtension(item.name))}
               </ul>
             );
           })}
