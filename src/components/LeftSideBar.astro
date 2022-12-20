@@ -1,0 +1,22 @@
+---
+import CodeDrops from "../layouts/CodeDrops.astro";
+import Card from "../components/Card.astro";
+import { getDropsData } from "../utils";
+
+const Paths = getDropsData();
+---
+
+<main class="w-full ml-5">
+  {
+    [...Paths.keys()].map((drop) => (
+      <div>
+        <h1 class="text-white">{drop}</h1>
+        <li>
+          {Paths.get(drop)!.files.map((item) => {
+            return <ul class="text-white">{item.name}</ul>;
+          })}
+        </li>
+      </div>
+    ))
+  }
+</main>
