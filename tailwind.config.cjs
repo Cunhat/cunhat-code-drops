@@ -4,8 +4,9 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				medium: "JostMedium",
-				regular: "JostRegular",
+				medium: "ChubboMedium",
+				regular: "ChubboRegular",
+				bold: "ChubboBold",
 			  },
 		},
 	},

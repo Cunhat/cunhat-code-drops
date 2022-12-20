@@ -1,19 +1,23 @@
 ---
-import CodeDrops from "../layouts/CodeDrops.astro";
-import Card from "../components/Card.astro";
-import { getDropsData } from "../utils";
+import CodeDrops from '../layouts/CodeDrops.astro';
+import Card from '../components/Card.astro';
+import { getDropsData } from '../utils';
 
 const Paths = getDropsData();
 ---
 
-<main class="w-full ml-5">
+<main class='w-full ml-5 flex flex-col gap-3'>
   {
     [...Paths.keys()].map((drop) => (
-      <div>
-        <h1 class="text-white">{drop}</h1>
+      <div class='flex flex-col gap-3'>
+        <h1 class='text-white text-xl font-bold'>{drop}</h1>
         <li>
           {Paths.get(drop)!.files.map((item) => {
-            return <ul class="text-white">{item.name}</ul>;
+            return (
+              <ul class='text-white text-base font-regular border-l-2 border-l-indigo-500 pl-3 h-7 hover:bg-indigo-300 hover:cursor-pointer'>
+                {item.name}
+              </ul>
+            );
           })}
         </li>
       </div>
