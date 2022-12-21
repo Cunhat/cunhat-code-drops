@@ -7,22 +7,24 @@ export const getDropsData = () => {
     
     const files = fs.readdirSync('./src/pages', { withFileTypes: true });
 
-    // console.log(files[1].isDirectory());
-
+    
     files.forEach((file) => {
         if (file.isDirectory()) {
+
             const filesInDir = fs.readdirSync(`./src/pages/${file.name}`);
             const filesInDirName = filesInDir.filter((file) => file.endsWith(".md"))
-            let filesObg: Array<{name: string}> = [];
-            filesInDirName.forEach((file) => {
+            let filesObg: Array<{name: string, path: string}> = [];
+           
+            filesInDirName.forEach((elem) => {
                 const obj = {
-                    name: file,
+                    name: elem,
+                    path: `/${file.name}/${removeExtension(elem)}`,
                 }
                 filesObg.push(obj);
             });
-            // console.log(filesInDirName);
+            
             dir.set(file.name, {
-                files: filesObg
+                files: filesObg,
             });
 
             
@@ -32,37 +34,13 @@ export const getDropsData = () => {
 
     return dir;
 
-
-//     const markdownPosts = files.filter((file) => file.endsWith(".md"));
-
-//   // Get gray-matter data from each file.
-//     const posts = markdownPosts.map((fileName) => {
-//     const fileContents = fs.readFileSync(`pages/${fileName}`, "utf8");
-//     const matterResult = matter(fileContents);
-//     return {
-//       title: matterResult.data.title,
-//       date: matterResult.data.date,
-//       subtitle: matterResult.data.subtitle,
-//       slug: fileName.replace(".md", ""),
-//     };
-//   });
-
-//   return posts;
 }
 
-// const path = [{
-//     "Title": "dirName",
-//     "files": [{
-//         //       title: matterResult.data.title,
-//         //       date: matterResult.data.date,
-//         //       subtitle: matterResult.data.subtitle,
-//         //       slug: fileName.replace(".md", ""),
-//         //     }]
-// }]
 
 type Directories = Map<string,{
     files: Array<{
         name: string,
+        path: string
         // title: string,
         // date: string,
         // subtitle: string,

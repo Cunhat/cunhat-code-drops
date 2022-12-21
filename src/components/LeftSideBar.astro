@@ -1,27 +1,46 @@
 ---
-import CodeDrops from '../layouts/CodeDrops.astro';
-import Card from '../components/Card.astro';
 import { getDropsData, capitalizeFirstLetter, removeExtension } from '../utils';
+import { cva } from 'class-variance-authority';
+
+const Link = cva(
+  'border-l-2 border-l-indigo-500 pl-3 w-full hover:bg-indigo-300 hover:cursor-pointer hover:bg-opacity-60 py-2 flex',
+  {
+    variants: {
+      active: {
+        true: 'bg-indigo-300 bg-opacity-60',
+        false: '',
+      },
+    },
+  },
+);
 
 const Paths = getDropsData();
+const currentUrl = Astro.url.pathname;
 ---
 
 <main class='w-full ml-5 flex flex-col gap-3'>
   {
     [...Paths.keys()].map((drop) => (
       <div class='flex flex-col gap-3'>
-        <h1 class='text-white text-xl font-bold'>
+        <h1 class='text-stone-50 text-xl font-bold'>
           {capitalizeFirstLetter(drop)}
         </h1>
-        <li>
+        <ul>
           {Paths.get(drop)!.files.map((item) => {
             return (
-              <ul class='text-white text-base font-regular border-l-2 border-l-indigo-500 pl-3 h-7 hover:bg-indigo-300 hover:cursor-pointer hover:bg-opacity-70'>
-                {capitalizeFirstLetter(removeExtension(item.name))}
-              </ul>
+              <li>
+                <a
+                  href={item.path}
+                  class={Link({ active: currentUrl === item.path })}
+                >
+                  <span class='text-stone-50 text-base font-regular '>
+                    {capitalizeFirstLetter(removeExtension(item.name))}
+                  </span>
+                </a>
+              </li>
             );
           })}
-        </li>
+        </ul>
       </div>
     ))
   }
