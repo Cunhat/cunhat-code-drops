@@ -19,6 +19,13 @@ const currentUrl = Astro.url.pathname;
 ---
 
 <main class='w-full mx-5 flex flex-col gap-3'>
+  <ul>
+    <li>
+      <a href={'/'} class={Link({ active: currentUrl === '/' })}>
+        <span class='text-stone-50 text-base font-regular'> Introdution</span>
+      </a>
+    </li>
+  </ul>
   {
     [...Paths.keys()].map((drop) => (
       <div class='flex flex-col gap-3'>
