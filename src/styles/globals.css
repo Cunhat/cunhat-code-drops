@@ -8,8 +8,6 @@
         background-color: #f6f6f6;
       }
   
-    
-      
       code {
         font-family: 'ChubboBold', 'ChubboMedium', 'ChubboRegular', monospace;
       }
@@ -41,4 +39,6 @@
       li {
         list-style: none;
       }
+
+    
 }
