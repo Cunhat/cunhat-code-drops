@@ -13,7 +13,6 @@ let { title, headings } = Astro.props;
 headings = [{ depth: 2, slug: 'overview', text: title }, ...headings].filter(
   ({ depth }) => depth > 1 && depth < 4,
 );
-console.log(headings);
 ---
 
 <!DOCTYPE html>
@@ -25,26 +24,46 @@ console.log(headings);
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class='bg-slate-900 min-h-screen scroll-smooth'>
-    <Navbar />
+  <body
+    class='bg-slate-900 min-h-screen scroll-smooth flex flex-col items-center'
+  >
+    <div class='sticky top-0 z-40 w-full bg-slate-900 max-w-7xl' id='nav-bar'>
+      <Navbar />
+    </div>
     <main
-      class='max-w-7xl mx-auto grid xl:grid-cols-[250px_auto_250px] md:grid-cols-[250px_auto] grid-cols-1 gap-10'
+      class='max-w-7xl mx-auto grid lg:grid-cols-[250px_auto_250px] md:grid-cols-[250px_auto] grid-cols-1 gap-10'
     >
-      <nav class='col-span-1 hidden md:flex' id='grid-left'>
+      <nav
+        class='col-span-1 hidden md:flex sticky top-20 h-auto max-h-[calc(100vh-80px)]'
+        id='grid-left'
+      >
         <LeftSideBar />
       </nav>
-      <article class='col-span-1 p-4 text-white markdown'>
+      <article class='col-span-1 p-4 text-white markdown overflow-y-auto'>
         <slot />
       </article>
-      <div class='col-span-1 hidden md:flex'>
+      <div
+        class='col-span-1 hidden sticky top-20 h-auto max-h-[calc(100vh-80px)] lg:flex'
+      >
         <RightSideBar headings={headings} />
       </div>
     </main>
   </body>
 </html>
+<!-- <script>
+  const scrollbar = document.querySelector('body');
+  scrollbar!.addEventListener('scroll', () => {
+    console.log('Scroll');
+    // if (scrollbar.scrollLeft > 0) {
+    //   scrollbar.classList.add('shadow-lg');
+    // } else {
+    //   scrollbar.classList.remove('shadow-lg');
+    // }
+  });
+</script> -->
 <style is:global>
   body {
-    background-image: url('/img/glow-homepage.webp');
+    /* background-image: url('/img/glow-homepage.webp'); */
     background-position: top;
     background-repeat: no-repeat;
     /* background-attachment: ; */
