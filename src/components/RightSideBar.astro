@@ -1,0 +1,40 @@
+---
+import type { MarkdownHeading } from 'astro';
+import { cva } from 'class-variance-authority';
+
+const Link = cva(
+  'border-l-2 border-l-indigo-500 pl-3 hover:bg-indigo-300 hover:cursor-pointer hover:bg-opacity-60 py-2 flex',
+  {
+    variants: {
+      active: {
+        true: 'bg-indigo-300 bg-opacity-60',
+        false: '',
+      },
+    },
+  },
+);
+
+export interface Props {
+  headings: MarkdownHeading[];
+}
+---
+
+<div class='flex flex-col gap-3'>
+  <h1 class='text-lg text-white font-bold'>On this page</h1>
+  <ul class='flex flex-col'>
+    {
+      Astro.props.headings.map((heading) => {
+        if (heading.text === undefined) return null;
+        return (
+          <li>
+            <a href={`#${heading.slug}`} class={Link({ active: false })}>
+              <span class='text-stone-50 text-base font-regular '>
+                {heading.text}
+              </span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
