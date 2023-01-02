@@ -50,6 +50,7 @@ export interface Props {
         ).at(-1);
 
         console.log(tocItem);
+        if (!tocItem) return;
 
         if (item.isIntersecting) {
           // get current all active elements
