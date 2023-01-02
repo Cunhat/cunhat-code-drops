@@ -1,5 +1,5 @@
 ---
-title: Why CT3A?
+title: Portal?
 description: Why you should pick Create T3 App for your next project
 layout: ../../layouts/codeDrops.astro
 lang: en
