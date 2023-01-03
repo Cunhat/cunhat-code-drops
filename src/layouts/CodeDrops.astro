@@ -42,9 +42,23 @@ headings = [{ depth: 2, slug: 'overview', text: title }, ...headings].filter(
       >
         <LeftSideBar />
       </nav>
-      <article class='col-span-1 p-4 text-white markdown overflow-y-auto'>
-        <slot />
-      </article>
+      <section>
+        <h1
+          id='overview'
+          class='mb-4 px-4 text-3xl font-extrabold dark:text-t3-purple-100'
+        >
+          <a
+            href='#overview'
+            class='heading-link heading-link--hidden---effects'
+            data-heading-link
+          >
+            {title}
+          </a>
+        </h1>
+        <article class='col-span-1 p-4 text-white markdown overflow-y-auto'>
+          <slot />
+        </article>
+      </section>
       <div
         class='col-span-1 hidden sticky top-20 h-auto max-h-[calc(100vh-80px)] lg:flex'
       >
