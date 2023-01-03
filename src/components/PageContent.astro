@@ -1,0 +1,26 @@
+---
+import type { MarkdownHeading } from 'astro';
+import type { Frontmatter } from '../utils';
+
+export interface Props {
+  headings: MarkdownHeading[];
+  frontmatter: Frontmatter;
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<article>
+  <section>
+    <h1 id='overview' class='text-3xl font-bold dark:text-t3-purple-100'>
+      <a
+        href='#overview'
+        class='heading-link heading-link--hidden---effects'
+        data-heading-link
+      >
+        {frontmatter.title}
+      </a>
+    </h1>
+    <slot />
+  </section>
+</article>

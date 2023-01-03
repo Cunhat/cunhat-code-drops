@@ -2,10 +2,18 @@
 import CodeDrops from '../layouts/CodeDrops.astro';
 import Card from '../components/Card.astro';
 import { getDropsData } from '../utils';
+import { title } from 'process';
 
 const teste = getDropsData();
 ---
 
-<CodeDrops headings={[]}>
+<CodeDrops
+  frontmatter={{
+    title: 'Intro',
+    description: 'introduction',
+    layout: ' ../../layouts/codeDrops.astro',
+  }}
+  headings={[]}
+>
   <main class=''>TESTE</main>
 </CodeDrops>

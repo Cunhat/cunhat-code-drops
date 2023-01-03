@@ -16,6 +16,7 @@ const Link = cva(
 
 export interface Props {
   headings: MarkdownHeading[];
+  // frontmatter: Frontmatter;
 }
 ---
 
@@ -53,7 +54,6 @@ export interface Props {
 
           if (!tocItem) return;
 
-          console.log(item.target.id, item.isIntersecting);
           if (item.isIntersecting) {
             // get current all active elements
             const currentActiveElements = Array.from(

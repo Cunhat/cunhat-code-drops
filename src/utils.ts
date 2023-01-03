@@ -55,3 +55,14 @@ export const removeExtension = (fileName: string) => {
 export const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+export type Frontmatter = {
+    title: string;
+    description: string;
+    layout: string;
+    // image?: { src: string; alt: string };
+    // dir?: "ltr" | "rtl";
+    // ogLocale?: string;
+    // lang?: KnownLanguageCode;
+    // isMdx?: boolean;
+  };
+  

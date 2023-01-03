@@ -3,16 +3,19 @@ import LeftSideBar from '../components/LeftSideBar.astro';
 import Navbar from '../components/Navbar.astro';
 import type { MarkdownHeading } from 'astro';
 import RightSideBar from '../components/RightSideBar.astro';
+import PageContent from '../components/PageContent.astro';
+import type { Frontmatter } from '../utils';
 export interface Props {
-  title: string;
   headings: MarkdownHeading[];
+  frontmatter: Frontmatter;
 }
 
-let { title, headings } = Astro.props;
+let { headings, frontmatter } = Astro.props;
 
-headings = [{ depth: 2, slug: 'overview', text: title }, ...headings].filter(
-  ({ depth }) => depth > 1 && depth < 4,
-);
+headings = [
+  { depth: 2, slug: 'overview', text: frontmatter.title },
+  ...headings,
+].filter(({ depth }) => depth > 1 && depth < 4);
 ---
 
 <!DOCTYPE html>
@@ -22,7 +25,7 @@ headings = [{ depth: 2, slug: 'overview', text: title }, ...headings].filter(
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
-    <title>{title}</title>
+    <title>{frontmatter.title}</title>
   </head>
   <body
     class='bg-slate-900 min-h-screen scroll-smooth flex flex-col items-center'
@@ -42,23 +45,11 @@ headings = [{ depth: 2, slug: 'overview', text: title }, ...headings].filter(
       >
         <LeftSideBar />
       </nav>
-      <section>
-        <h1
-          id='overview'
-          class='mb-4 px-4 text-3xl font-extrabold dark:text-t3-purple-100'
-        >
-          <a
-            href='#overview'
-            class='heading-link heading-link--hidden---effects'
-            data-heading-link
-          >
-            {title}
-          </a>
-        </h1>
-        <article class='col-span-1 p-4 text-white markdown overflow-y-auto'>
+      <div class='col-span-1 p-4 text-white markdown overflow-y-auto'>
+        <PageContent headings={headings} frontmatter={frontmatter}>
           <slot />
-        </article>
-      </section>
+        </PageContent>
+      </div>
       <div
         class='col-span-1 hidden sticky top-20 h-auto max-h-[calc(100vh-80px)] lg:flex'
       >
@@ -157,11 +148,8 @@ headings = [{ depth: 2, slug: 'overview', text: title }, ...headings].filter(
   .markdown a > p {
     @apply mb-0 text-sm;
   }
-  .markdown a:not(.heading-link--hidden---effects) {
-    @apply text-indigo-500 underline decoration-slate-500 
-              decoration-dotted underline-offset-2  
-              hover:text-indigo-700 dark:text-indigo-200 
-              dark:decoration-indigo-200 dark:hover:text-indigo-300;
+  .markdown .heading-link--hidden---effects {
+    @apply text-indigo-500 hover:text-indigo-300;
   }
 
   .markdown code {
@@ -185,10 +173,10 @@ headings = [{ depth: 2, slug: 'overview', text: title }, ...headings].filter(
   }
 
   .markdown details {
-    @apply mt-2 w-full rounded-md border border-indigo-300/80 bg-[#191724] px-3 transition-all duration-300 ease-in-out;
+    @apply mt-2 w-full rounded-md border border-indigo-300 bg-[#191724] px-3 transition-all duration-300 ease-in-out;
   }
   .markdown details[open] {
-    @apply bg-indigo-200/10;
+    @apply bg-indigo-200;
   }
   .markdown details pre {
     @apply border-0 shadow-none;
