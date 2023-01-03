@@ -1,7 +1,7 @@
 ---
 title: Union
 description: Why you should pick Create T3 App for your next project
-layout: ../../layouts/codeDrops.astro
+layout: ../../layouts/CodeDrops.astro
 lang: en
 ---
 
