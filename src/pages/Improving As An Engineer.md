@@ -7,7 +7,7 @@ lang: en
 
 [https://www.youtube.com/watch?v=rzwaaWH0ksk](https://www.youtube.com/watch?v=rzwaaWH0ksk)
 
-![Untitled](Improving%20As%20An%20Engineer%20df86321be3ae4dafa038e3eaeecd3494/Untitled.png)
+![Untitled](/img/Improving%20As%20An%20Engineer/Untitled.png)
 
 This is a type of goals that normally people have, however they are not good examples because they are a little bit arbitrary and you don’t have start and ends. For example, you don’t lear React, because you are always learning React etc
 

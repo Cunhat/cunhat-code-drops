@@ -11,9 +11,9 @@ lang: en
 - Behavior libraries (HeadlessUI, Radix, React Aria)
 - Style systems (TailwindUI, DaisyUI, Mantime)
 
-![Screenshot 2022-10-05 at 12.05.22.png](UI%20Libraries%201b81a9ad9d9743048a238c581e47a830/Screenshot_2022-10-05_at_12.05.22.png)
+![Screenshot 2022-10-05 at 12.05.22.png](/img/UI%20Libraries/Screenshot_2022-10-05_at_12.05.22.png)
 
-![Untitled](UI%20Libraries%201b81a9ad9d9743048a238c581e47a830/Untitled.png)
+![Untitled](UI%20Libraries/Untitled.png)
 
 ## Styled-Components
 

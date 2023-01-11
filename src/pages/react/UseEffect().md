@@ -9,7 +9,7 @@ In defense of useEffect
 
 [https://www.youtube.com/watch?v=Zw4lJqBphvA](https://www.youtube.com/watch?v=Zw4lJqBphvA)
 
-![Screenshot 2022-10-13 at 12.04.31.png](<UseEffect()%20d790b0d3f0604a60844fe3ada5197c0e/Screenshot_2022-10-13_at_12.04.31.png>)
+![Screenshot 2022-10-13 at 12.04.31.png](/img/UseEffect/Screenshot_2022-10-13_at_12.04.31.png)
 
 Things you can do with useEffect()
 

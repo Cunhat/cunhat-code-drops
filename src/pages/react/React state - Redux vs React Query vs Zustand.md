@@ -43,4 +43,4 @@ Built-in React useState
 - Don’t be too scared of prop drilling
 - I don’t recommend Context much
 
-![Untitled](React%20state%20-%20Redux%20vs%20React%20Query%20vs%20Zustand%20d13f58ed6668426285ae6d95715185ac/Untitled.png)
+![Untitled](/img/React%20state%20-%20Redux%20vs%20React%20Query%20vs%20Zustand/Untitled.png)

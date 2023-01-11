@@ -35,6 +35,6 @@ With sets is very easy to remove and verify if a specific element exists, becaus
 ```jsx
 const userIdsInChatSet = new Set([1, 7, 17, 17]); // --> [1, 7, 17]
 
-cosnt isUserOnline = (id: number) => userIdsInChatSet.has(id);
+const isUserOnline = (id: number) => userIdsInChatSet.has(id);
 const removeUserFromOnlineSet = (id: number) => userIdsInChatSet.delete(id);
 ```
