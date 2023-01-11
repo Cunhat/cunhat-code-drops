@@ -1,7 +1,7 @@
 ---
 title: Unit tests
 description: Unit tests
-layout: ../../layouts/CodeDrops.astro
+layout: ../layouts/CodeDrops.astro
 lang: en
 ---
 

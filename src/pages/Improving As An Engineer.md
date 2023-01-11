@@ -1,7 +1,7 @@
 ---
 title: Improving As An Engineer
 description: Improving As An Engineer
-layout: ../../layouts/CodeDrops.astro
+layout: ../layouts/CodeDrops.astro
 lang: en
 ---
 

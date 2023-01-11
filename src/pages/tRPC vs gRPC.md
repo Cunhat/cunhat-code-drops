@@ -1,7 +1,7 @@
 ---
 title: tRPC vs gRPC
 description: tRPC vs gRPC
-layout: ../../layouts/CodeDrops.astro
+layout: ../layouts/CodeDrops.astro
 lang: en
 ---
 
