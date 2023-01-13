@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 export const getDropsData = () => {
-  let dir: Directories = new Map();
+  let dir: Directories = new Array();
 
   const files = fs.readdirSync('./src/pages', { withFileTypes: true });
 
@@ -21,10 +21,7 @@ export const getDropsData = () => {
         filesObg.push(obj);
       });
 
-      dir.set(file.name, {
-        files: filesObg,
-        isDirectory: true,
-      });
+      dir.push({ folderName: file.name, files: filesObg, isDirectory: true });
     } else if (file.name.endsWith('.md')) {
       let filesObg: Array<{ name: string; path: string }> = [];
       const renamedFile = removeExtension(file.name);
@@ -33,7 +30,8 @@ export const getDropsData = () => {
         path: `/${renamedFile}`,
       };
       filesObg.push(obj);
-      dir.set(renamedFile, {
+      dir.push({
+        folderName: renamedFile,
         files: filesObg,
         isDirectory: false,
       });
@@ -43,20 +41,18 @@ export const getDropsData = () => {
   return dir;
 };
 
-type Directories = Map<
-  string,
-  {
-    files: Array<{
-      name: string;
-      path: string;
-      // title: string,
-      // date: string,
-      // subtitle: string,
-      // slug: string,
-    }>;
-    isDirectory: boolean;
-  }
->;
+type Directories = Array<{
+  folderName: string;
+  isDirectory: boolean;
+  files: Array<{
+    name: string;
+    path: string;
+    // title: string,
+    // date: string,
+    // subtitle: string,
+    // slug: string,
+  }>;
+}>;
 
 export const removeExtension = (fileName: string) => {
   return fileName.replace('.md', '');

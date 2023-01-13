@@ -27,28 +27,32 @@ const currentUrl = Astro.url.pathname;
     </li>
   </ul>
   {
-    [...Paths.keys()].map((drop) => (
-      <div class='flex flex-col gap-3'>
-        <h1 class='text-stone-50 text-xl font-bold'>
-          {capitalizeFirstLetter(drop)}
-        </h1>
-        <ul>
-          {Paths.get(drop)!.files.map((item) => {
+    Paths.map((drop) => {
+      return (
+        <div class='flex flex-col gap-3'>
+          {drop.isDirectory ? (
+            <h1 class='text-stone-50 text-xl font-bold'>
+              {capitalizeFirstLetter(drop.folderName)}
+            </h1>
+          ) : null}
+          {drop.files.map((item) => {
             return (
-              <li>
-                <a
-                  href={item.path}
-                  class={Link({ active: currentUrl === item.path })}
-                >
-                  <span class='text-stone-50 text-base font-regular '>
-                    {capitalizeFirstLetter(removeExtension(item.name))}
-                  </span>
-                </a>
-              </li>
+              <ul>
+                <li>
+                  <a
+                    href={item.path}
+                    class={Link({ active: currentUrl === item.path })}
+                  >
+                    <span class='text-stone-50 text-base font-regular '>
+                      {capitalizeFirstLetter(removeExtension(item.name))}
+                    </span>
+                  </a>
+                </li>
+              </ul>
             );
           })}
-        </ul>
-      </div>
-    ))
+        </div>
+      );
+    })
   }
 </main>
