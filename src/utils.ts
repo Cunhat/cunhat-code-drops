@@ -1,68 +1,77 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
 export const getDropsData = () => {
-    let dir:Directories = new Map();
-    
-    const files = fs.readdirSync('./src/pages', { withFileTypes: true });
+  let dir: Directories = new Map();
 
-    
-    files.forEach((file) => {
-        if (file.isDirectory()) {
+  const files = fs.readdirSync('./src/pages', { withFileTypes: true });
 
-            const filesInDir = fs.readdirSync(`./src/pages/${file.name}`);
-            const filesInDirName = filesInDir.filter((file) => file.endsWith(".md"))
-            let filesObg: Array<{name: string, path: string}> = [];
-           
-            filesInDirName.forEach((elem) => {
-                const obj = {
-                    name: elem,
-                    path: `/${file.name}/${removeExtension(elem)}`,
-                }
-                filesObg.push(obj);
-            });
-            
-            dir.set(file.name, {
-                files: filesObg,
-            });
+  files.forEach((file) => {
+    if (file.isDirectory()) {
+      const filesInDir = fs.readdirSync(`./src/pages/${file.name}`);
+      const filesInDirName = filesInDir.filter((file) => file.endsWith('.md'));
+      let filesObg: Array<{ name: string; path: string }> = [];
 
-            
-        }
-        //console.log(dir);
-    });
+      filesInDirName.forEach((elem) => {
+        const obj = {
+          name: elem,
+          path: `/${file.name}/${removeExtension(elem)}`,
+        };
+        filesObg.push(obj);
+      });
 
-    return dir;
+      dir.set(file.name, {
+        files: filesObg,
+        isDirectory: true,
+      });
+    } else if (file.name.endsWith('.md')) {
+      let filesObg: Array<{ name: string; path: string }> = [];
+      const renamedFile = removeExtension(file.name);
+      const obj = {
+        name: renamedFile,
+        path: `/${renamedFile}`,
+      };
+      filesObg.push(obj);
+      dir.set(renamedFile, {
+        files: filesObg,
+        isDirectory: false,
+      });
+    }
+  });
 
-}
+  return dir;
+};
 
-
-type Directories = Map<string,{
+type Directories = Map<
+  string,
+  {
     files: Array<{
-        name: string,
-        path: string
-        // title: string,
-        // date: string,
-        // subtitle: string,
-        // slug: string,
-    }>,
-}>
+      name: string;
+      path: string;
+      // title: string,
+      // date: string,
+      // subtitle: string,
+      // slug: string,
+    }>;
+    isDirectory: boolean;
+  }
+>;
 
 export const removeExtension = (fileName: string) => {
-    return fileName.replace(".md", "");
-}
+  return fileName.replace('.md', '');
+};
 
 export const capitalizeFirstLetter = (string: string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
 export type Frontmatter = {
-    title: string;
-    description: string;
-    layout: string;
-    // image?: { src: string; alt: string };
-    // dir?: "ltr" | "rtl";
-    // ogLocale?: string;
-    // lang?: KnownLanguageCode;
-    // isMdx?: boolean;
-  };
-  
+  title: string;
+  description: string;
+  layout: string;
+  // image?: { src: string; alt: string };
+  // dir?: "ltr" | "rtl";
+  // ogLocale?: string;
+  // lang?: KnownLanguageCode;
+  // isMdx?: boolean;
+};
