@@ -28,7 +28,7 @@ headings = [
     <title>{frontmatter.title}</title>
   </head>
   <body
-    class='bg-slate-900 min-h-screen scroll-smooth flex flex-col items-center'
+    class='bg-slate-900 min-h-screen scroll-smooth flex flex-col items-center drops-scrollbar'
   >
     <div
       class='sticky top-0 z-40 w-full bg-slate-900 flex justify-center'
@@ -40,7 +40,7 @@ headings = [
       class='max-w-7xl mx-auto grid lg:grid-cols-[250px_auto_250px] md:grid-cols-[250px_auto] grid-cols-1 gap-10'
     >
       <nav
-        class='col-span-1 hidden md:flex sticky top-20 h-auto max-h-[calc(100vh-80px)]'
+        class='col-span-1 hidden md:flex sticky top-20 h-auto max-h-[calc(100vh-80px)] overflow-auto py-3 drops-scrollbar'
         id='grid-left'
       >
         <LeftSideBar />
@@ -210,5 +210,9 @@ headings = [
 
   .embed iframe {
     @apply absolute top-0 left-0 h-full w-full;
+  }
+
+  .drops-scrollbar {
+    @apply scrollbar-thin scrollbar-track-indigo-100 scrollbar-thumb-indigo-500;
   }
 </style>
