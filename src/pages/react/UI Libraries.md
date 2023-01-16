@@ -5,7 +5,9 @@ layout: ../../layouts/CodeDrops.astro
 lang: en
 ---
 
-[https://www.youtube.com/watch?v=CQuTF-bkOgc](https://www.youtube.com/watch?v=CQuTF-bkOgc)
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CQuTF-bkOgc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 - Extensions of CSS (SASS, LESS, Tailwind)
 - Behavior libraries (HeadlessUI, Radix, React Aria)

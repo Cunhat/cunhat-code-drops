@@ -7,7 +7,9 @@ lang: en
 
 Theo’s video about Bd’s
 
-[https://www.youtube.com/watch?v=cC6HFd1zcbo](https://www.youtube.com/watch?v=cC6HFd1zcbo)
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cC6HFd1zcbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 - “An external things that stores data”
 - Usually persisted data

@@ -5,7 +5,9 @@ layout: ../../layouts/CodeDrops.astro
 lang: en
 ---
 
-[https://www.youtube.com/watch?v=7vHKeFrwvYk](https://www.youtube.com/watch?v=7vHKeFrwvYk)
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7vHKeFrwvYk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ```jsx
 type CityName = "New York" | "Mumbai" | "Lagos";

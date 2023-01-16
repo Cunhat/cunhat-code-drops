@@ -7,7 +7,9 @@ lang: en
 
 Font Theo’s video about react fetching
 
-[https://www.youtube.com/watch?v=M-aTAsYo-Lc&t=502s](https://www.youtube.com/watch?v=M-aTAsYo-Lc&t=502s)
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M-aTAsYo-Lc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 React Query is by far my favourite fetching framework:
 

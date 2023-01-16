@@ -5,7 +5,9 @@ layout: ../layouts/CodeDrops.astro
 lang: en
 ---
 
-[https://www.youtube.com/watch?v=rzwaaWH0ksk](https://www.youtube.com/watch?v=rzwaaWH0ksk)
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rzwaaWH0ksk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ![Untitled](/img/Improving%20As%20An%20Engineer/Untitled.png)
 

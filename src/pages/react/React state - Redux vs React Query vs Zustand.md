@@ -5,9 +5,11 @@ layout: ../../layouts/CodeDrops.astro
 lang: en
 ---
 
-[https://www.youtube.com/watch?v=5-1LM2NySR0](https://www.youtube.com/watch?v=5-1LM2NySR0)
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5-1LM2NySR0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
-# The React State management Rant
+## The React State management Rant
 
 If you can use React-query, you probably should!!
 

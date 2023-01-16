@@ -5,7 +5,9 @@ layout: ../../layouts/CodeDrops.astro
 lang: en
 ---
 
-[https://www.youtube.com/watch?v=zhgbanI0UV8](https://www.youtube.com/watch?v=zhgbanI0UV8)
+<div class="embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zhgbanI0UV8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ![Screenshot 2022-10-22 at 14.43.19.png](/img/Polymorphic%20and%20slots/Screenshot_2022-10-22_at_14.43.19.png)
 
