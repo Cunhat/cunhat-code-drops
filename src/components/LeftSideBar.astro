@@ -7,7 +7,7 @@ const Link = cva(
   {
     variants: {
       active: {
-        true: 'bg-indigo-300 bg-opacity-60',
+        true: 'bg-indigo-300',
         false: '',
       },
     },
@@ -16,6 +16,9 @@ const Link = cva(
 
 const Paths = getDropsData();
 const currentUrl = Astro.url.pathname;
+
+const singleFiles = Paths.filter((elem) => elem.isDirectory === false);
+const multiFiles = Paths.filter((elem) => elem.isDirectory === true);
 ---
 
 <main class='w-full mx-5 flex flex-col gap-3'>
@@ -25,23 +28,42 @@ const currentUrl = Astro.url.pathname;
         <span class='text-stone-50 text-base font-regular'> Introdution</span>
       </a>
     </li>
+    {
+      singleFiles.map((item) => {
+        return item.files.map((path) => (
+          <li>
+            <a
+              href={path.path}
+              class={Link({
+                active: currentUrl.replaceAll('%20', ' ') === path.path,
+              })}
+            >
+              <span class='text-stone-50 text-base font-regular '>
+                {capitalizeFirstLetter(removeExtension(path.name))}
+              </span>
+            </a>
+          </li>
+        ));
+      })
+    }
   </ul>
   {
-    Paths.map((drop) => {
+    multiFiles.map((drop) => {
       return (
-        <div class='flex flex-col gap-3'>
-          {drop.isDirectory ? (
-            <h1 class='text-stone-50 text-xl font-bold'>
-              {capitalizeFirstLetter(drop.folderName)}
-            </h1>
-          ) : null}
+        <div class='flex flex-col'>
+          <h1 class='text-stone-50 text-xl font-bold mb-3'>
+            {capitalizeFirstLetter(drop.folderName)}
+          </h1>
+
           {drop.files.map((item) => {
             return (
               <ul>
                 <li>
                   <a
                     href={item.path}
-                    class={Link({ active: currentUrl === item.path })}
+                    class={Link({
+                      active: currentUrl.replaceAll('%20', ' ') === item.path,
+                    })}
                   >
                     <span class='text-stone-50 text-base font-regular '>
                       {capitalizeFirstLetter(removeExtension(item.name))}
