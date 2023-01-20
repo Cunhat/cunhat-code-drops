@@ -40,19 +40,17 @@ headings = [
       class='max-w-7xl mx-auto grid lg:grid-cols-[250px_auto_250px] md:grid-cols-[250px_auto] grid-cols-1 gap-10'
     >
       <nav
-        class='col-span-1 hidden md:flex sticky top-20 h-auto max-h-[calc(100vh-80px)] overflow-auto py-3 drops-scrollbar'
+        class='col-span-1 hidden md:flex sticky top-20 h-auto overflow-auto drops-scrollbar py-3'
         id='grid-left'
       >
         <LeftSideBar />
       </nav>
-      <div class='col-span-1 p-4 text-white markdown overflow-y-auto'>
+      <div class='col-span-1 text-white markdown overflow-y-auto'>
         <PageContent headings={headings} frontmatter={frontmatter}>
           <slot />
         </PageContent>
       </div>
-      <div
-        class='col-span-1 hidden sticky top-20 h-auto max-h-[calc(100vh-80px)] lg:flex px-3'
-      >
+      <div class='col-span-1 hidden sticky top-20 h-auto lg:flex px-3 py-3'>
         <RightSideBar headings={headings} />
       </div>
     </main>
@@ -125,7 +123,7 @@ headings = [
     @apply flex w-full flex-col items-start justify-start px-4 leading-relaxed text-slate-900 selection:bg-purple-500 selection:text-indigo-500 dark:text-indigo-100 dark:selection:bg-indigo-100 dark:selection:text-slate-900;
   }
   .markdown h1 {
-    @apply mt-8 mb-4 text-3xl font-extrabold text-indigo-500;
+    @apply mt-3 mb-4 text-3xl font-extrabold text-indigo-500;
   }
   .markdown h2 {
     @apply mt-8 mb-4 text-2xl font-bold text-indigo-500;
